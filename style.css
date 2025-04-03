@@ -1,0 +1,202 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+}
+/* ... (existing CSS) ... */
+
+.sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    padding-top: 20px;
+}
+
+.sidebar .nav-link {
+    font-weight: 500;
+    color: #333;
+}
+
+.sidebar .nav-link.active {
+    color: #007bff;
+}
+
+.main-content {
+    margin-left: 200px; /* Adjust margin based on sidebar width */
+    padding: 20px;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    .sidebar {
+        position: static;
+        height: auto;
+        padding: 0;
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+}
+.container {
+    width: 90%;
+    margin: auto;
+    overflow: hidden;
+    padding: 20px 0;
+}
+
+header.header-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two columns */
+  align-items: center; /* Vertical alignment */
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  color: white;
+  padding: 2em;
+}
+
+.profile-section {
+    text-align: left;
+}
+
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.profile-section h1 {
+    margin: 10px 0;
+    font-size: 2em;
+}
+
+.profile-section p {
+    font-size: 1.1em;
+}
+
+.social-links {
+    text-align: right;
+}
+
+.social-links a {
+    color: white;
+    font-size: 1.8em;
+    margin: 0 15px;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #ddd;
+}
+
+/* ... (rest of the CSS remains the same) ... */
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    header.header-grid {
+        grid-template-columns: 1fr; /* Single column on smaller screens */
+        text-align: center;
+    }
+
+    .profile-section {
+        text-align: center;
+    }
+
+    .social-links {
+        text-align: center;
+    }
+
+    .profile-pic {
+        margin: 20px auto;
+    }
+}
+.social-links {
+    margin-top: 20px;
+}
+
+.social-links a {
+    color: white;
+    font-size: 1.8em;
+    margin: 0 15px;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #ddd;
+}
+/* ... (existing CSS) ... */
+
+#project-list .card, #certificate-list .card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#project-list .card:hover, #certificate-list .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+#project-list .card h3, #certificate-list .card h3 {
+    color: #6a11cb;
+    margin-bottom: 10px;
+}
+
+#project-list .card p, #certificate-list .card p {
+    margin-bottom: 10px;
+}
+
+#project-list .card a {
+    color: #007bff;
+    text-decoration: none;
+}
+/* ... (existing CSS) ... */
+
+#github-repos .card {
+    margin-bottom: 20px;
+}
+
+#github-repos .card img {
+    object-fit: cover; /* Ensure images fit nicely */
+    height: 200px; /* Set a fixed height for images */
+} 
+#skill-list .skill-bar {
+    background-color: #e9ecef;
+    padding: 8px 15px;
+    border-radius: 5px;
+    margin-right: 10px;
+    display: inline-block;
+    margin-bottom:10px;
+
+}
+
+#contact-form .btn-primary {
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    transition: background 0.3s ease;
+}
+
+#contact-form .btn-primary:hover {
+    background: linear-gradient(135deg, #2575fc 0%, #6a11cb 100%);
+}
+
+#resume .btn-primary{
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    transition: background 0.3s ease;
+}
+
+#resume .btn-primary:hover {
+    background: linear-gradient(135deg, #2575fc 0%, #6a11cb 100%);
+}

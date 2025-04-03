@@ -1,0 +1,20 @@
+[
+    {
+      "title": "SFC-STORE-FRONTEND-PROJECT",
+      "description": "Developed a fully functional e-commerce website using React.js.",
+      "technologies": ["React", "HTML", "CSS", "JavaScript", "Bootstrap"],
+      "link": "https://github.com/nitinprajapati888/SFC-STORE-FRONTEND-PROJECT.git"
+    },
+    {
+      "title": "Data Analysis Tool",
+      "description": "Built a Python-based tool for analyzing large datasets.",
+      "technologies": ["Python", "Pandas", "NumPy"],
+      "link": "https://github.com/nitinprajapati888/Data_Analyst_Automation.git"
+    },
+      {
+      "title": "Portfolio Website",
+      "description": "A personal portfolio website to showcase skills and projects.",
+      "technologies": ["HTML", "CSS", "JavaScript", "Bootstrap"],
+      "link": "https://github.com/yourusername/portfolio"
+    }
+  ]

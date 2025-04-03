@@ -1,0 +1,90 @@
+// Load introduction
+fetch('data/introduction.json')
+  .then(response => response.json())
+  .then(introduction => {
+    document.getElementById('introduction-text').textContent = introduction.introduction;
+  });
+
+// Load certificates
+fetch('data/certificates.json')
+  .then(response => response.json())
+  .then(certificates => {
+    const certificateList = document.getElementById('certificate-list');
+    certificates.forEach(certificate => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
+        <h3>${certificate.name}</h3>
+        <p>Organization: ${certificate.organization}</p>
+        <p>Date: ${certificate.date}</p>
+      `;
+      certificateList.appendChild(card);
+    });
+  });
+
+// Load projects
+fetch('data/projects.json')
+  .then(response => response.json())
+  .then(projects => {
+    const projectList = document.getElementById('project-list');
+    projects.forEach(project => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
+        <h3>${project.title}</h3>
+        <p>${project.description}</p>
+        <p>Technologies: ${project.technologies.join(', ')}</p>
+        <a href="${project.link}" target="_blank">View Project</a>
+      `;
+      projectList.appendChild(card);
+    });
+  });
+
+// Load skills
+fetch('data/skills.json')
+  .then(response => response.json())
+  .then(skills => {
+    const skillList = document.getElementById('skill-list');
+    skills.forEach(skill => {
+        const skillElement = document.createElement('div');
+        skillElement.className = "skill-bar";
+        skillElement.textContent = skill.skill;
+        skillList.appendChild(skillElement);
+    });
+  });
+// ... (other parts of your script.js) ...
+
+// Load GitHub repositories
+function fetchGitHubRepos() {
+    const githubUsername = 'yourusername'; // Replace with your GitHub username
+    fetch(`https://api.github.com/users/${githubUsername}/repos`)
+        .then(response => response.json())
+        .then(repos => {
+            const githubReposDiv = document.getElementById('github-repos');
+            repos.forEach(repo => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.style.width = '18rem'; // Set card width
+
+                card.innerHTML = `
+                    <img src="${repo.owner.avatar_url}" class="card-img-top" alt="${repo.name} image">
+                    <div class="card-body">
+                        <h5 class="card-title">${repo.name}</h5>
+                        <p class="card-text">${repo.description || 'No description'}</p>
+                        <a href="${repo.html_url}" class="btn btn-primary" target="_blank">View on GitHub</a>
+                    </div>
+                `;
+                githubReposDiv.appendChild(card);
+            });
+        });
+}
+
+fetchGitHubRepos();
+
+// ... (remaining parts of your script.js) ... // Call the function to fetch and display repos
+
+//contact form, this portion will be expanded later.
+document.getElementById('contact-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    alert("contact form submission, this functionality will be added later");
+});
