@@ -7,23 +7,27 @@ body {
     line-height: 1.6;
 }
 /* ... (existing CSS) ... */
-
-.sidebar {
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    padding-top: 20px;
-}
+/* ... (existing CSS) ... */
 
 .sidebar .nav-link {
     font-weight: 500;
     color: #333;
+    transition: color 0.3s ease, background-color 0.3s ease; /* Added transition */
+    padding: 10px 15px;
+    border-radius: 5px;
 }
 
 .sidebar .nav-link.active {
     color: #007bff;
+    background-color: #e9ecef; /* Add background color to active link */
 }
 
+.sidebar .nav-link:hover {
+    color: #007bff; /* Change color on hover */
+    background-color: #f0f0f0; /* Add background color on hover */
+}
+
+/* ... (rest of the CSS) ... */
 .main-content {
     margin-left: 200px; /* Adjust margin based on sidebar width */
     padding: 20px;
@@ -247,3 +251,129 @@ footer.footer-social {
 .project-details strong {
     color: #007bff;
 }
+/* ... (existing CSS) ... */
+
+.box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.box {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.box img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+.box h3 {
+    color: #6a11cb;
+    margin-bottom: 10px;
+}
+
+.box p {
+    margin-bottom: 10px;
+}
+
+.box .view-link {
+    color: #007bff;
+    text-decoration: none;
+}
+/* ... (existing CSS) ... */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    padding-top: 20px;
+    background-color: #f8f9fa; /* Light background */
+    border-right: 1px solid #ddd; /* Add a subtle border */
+}
+
+.sidebar-brand {
+    padding: 15px;
+    font-weight: bold;
+    font-size: 1.2em;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    color: #333; /* Darker text */
+}
+
+.sidebar .nav-link {
+    font-weight: 500;
+    color: #333;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    padding: 12px 15px;
+    border-radius: 5px;
+    display: flex; /* Use flexbox for icon and text alignment */
+    align-items: center;
+}
+
+.sidebar .nav-link i {
+    margin-right: 10px; /* Add space between icon and text */
+}
+
+.sidebar .nav-link.active {
+    color: #007bff;
+    background-color: #e9ecef;
+    border-left: 3px solid #007bff; /* Highlight active link */
+}
+
+.sidebar .nav-link:hover {
+    color: #007bff;
+    background-color: #f0f0f0;
+}
+/* ... (existing CSS) ... */
+
+.sidebar-toggle {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    display: none; /* Initially hidden on larger screens */
+}
+
+.sidebar-nav {
+    transition: max-height 0.3s ease;
+    overflow: hidden;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    .sidebar {
+        position: static;
+        height: auto;
+        padding: 0;
+    }
+
+    .sidebar-toggle {
+        display: block; /* Show toggle button on smaller screens */
+    }
+
+    .sidebar-nav {
+        max-height: 0; /* Initially collapsed */
+    }
+
+    .sidebar-nav.show {
+        max-height: 500px; /* Adjust as needed */
+    }
+
+    .main-content {
+        margin-left: 0; /* Remove left margin on smaller screens */
+    }
+}
+/* ... (rest of the CSS) ... */

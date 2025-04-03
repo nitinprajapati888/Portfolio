@@ -4,41 +4,64 @@ fetch('data/introduction.json')
   .then(introduction => {
     document.getElementById('introduction-text').textContent = introduction.introduction;
   });
-
 // Load certificates
 fetch('data/certificates.json')
-  .then(response => response.json())
-  .then(certificates => {
-    const certificateList = document.getElementById('certificate-list');
-    certificates.forEach(certificate => {
-      const card = document.createElement('div');
-      card.className = 'card';
-      card.innerHTML = `
-        <h3>${certificate.name}</h3>
-        <p>Organization: ${certificate.organization}</p>
-        <p>Date: ${certificate.date}</p>
-      `;
-      certificateList.appendChild(card);
+    .then(response => response.json())
+    .then(certificates => {
+        const certificateList = document.getElementById('certificate-list');
+        certificates.forEach(certificate => {
+            const box = document.createElement('div');
+            box.className = 'box';
+            box.innerHTML = `
+                <img src="assets/certificate-placeholder.jpg" alt="${certificate.name} image">
+                <h3>${certificate.name}</h3>
+                <p>Organization: ${certificate.organization}</p>
+                <p>Date: ${certificate.date}</p>
+                <a href="#" class="view-link">View Certificate</a>
+            `;
+            certificateList.appendChild(box);
+        });
     });
-  });
 
 // Load projects
 fetch('data/projects.json')
-  .then(response => response.json())
-  .then(projects => {
-    const projectList = document.getElementById('project-list');
-    projects.forEach(project => {
-      const card = document.createElement('div');
-      card.className = 'card';
-      card.innerHTML = `
-        <h3>${project.title}</h3>
-        <p>${project.description}</p>
-        <p>Technologies: ${project.technologies.join(', ')}</p>
-        <a href="${project.link}" target="_blank">View Project</a>
-      `;
-      projectList.appendChild(card);
+    .then(response => response.json())
+    .then(projects => {
+        const projectList = document.getElementById('project-list');
+        projects.forEach(project => {
+            const box = document.createElement('div');
+            box.className = 'box';
+            box.innerHTML = `
+                <img src="assets/project-placeholder.jpg" alt="${project.title} image">
+                <h3>${project.title}</h3>
+                <p>${project.description}</p>
+                <p>Technologies: ${project.technologies.join(', ')}</p>
+                <a href="${project.link}" class="view-link" target="_blank">View Project</a>
+            `;
+            projectList.appendChild(box);
+        });
     });
-  });
+
+// Load GitHub repositories
+function fetchGitHubRepos() {
+    const githubUsername = 'yourusername';
+    fetch(`https://api.github.com/users/${githubUsername}/repos`)
+        .then(response => response.json())
+        .then(repos => {
+            const githubReposDiv = document.getElementById('github-repos');
+            repos.forEach(repo => {
+                const box = document.createElement('div');
+                box.className = 'box';
+                box.innerHTML = `
+                    <img src="${repo.owner.avatar_url}" alt="${repo.name} image">
+                    <h3>${repo.name}</h3>
+                    <p>${repo.description || 'No description'}</p>
+                    <a href="${repo.html_url}" class="view-link" target="_blank">View on GitHub</a>
+                `;
+                githubReposDiv.appendChild(box);
+            });
+        });
+}
 
 // Load skills
 fetch('data/skills.json')
@@ -52,37 +75,51 @@ fetch('data/skills.json')
         skillList.appendChild(skillElement);
     });
   });
-// ... (other parts of your script.js) ...
-function fetchGitHubRepos() {
-    const githubUsername = 'yourusername';
-    fetch(`https://api.github.com/users/${githubUsername}/repos`)
-        .then(response => response.json())
-        .then(repos => {
-            const githubReposDiv = document.getElementById('github-repos');
-            repos.forEach(repo => {
-                const card = document.createElement('div');
-                card.className = 'card project-card'; // Added project-card class
-                card.style.width = '18rem';
-
-                card.innerHTML = `
-                    <img src="${repo.owner.avatar_url}" class="card-img-top" alt="${repo.name} image">
-                    <div class="card-body">
-                        <h5 class="card-title">${repo.name}</h5>
-                        <p class="card-text">${repo.description || 'No description'}</p>
-                        <a href="${repo.html_url}" class="btn btn-primary" target="_blank">View on GitHub</a>
-                    </div>
-                    <div class="project-details">
-                        <p><strong>Language:</strong> ${repo.language || 'N/A'}</p>
-                        <p><strong>Stars:</strong> ${repo.stargazers_count}</p>
-                        <p><strong>Forks:</strong> ${repo.forks_count}</p>
-                    </div>
-                `;
-                githubReposDiv.appendChild(card);
-            });
-        });
-}
 //contact form, this portion will be expanded later.
 document.getElementById('contact-form').addEventListener('submit', function(event) {
     event.preventDefault();
     alert("contact form submission, this functionality will be added later");
+});
+// Smooth Scrolling and Active Link
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+
+        // Update active link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.classList.remove('active');
+        });
+        this.classList.add('active');
+    });
+});
+
+// Back to Top Button
+const backToTopButton = document.getElementById('back-to-top');
+
+window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+        backToTopButton.style.display = 'block';
+    } else {
+        backToTopButton.style.display = 'none';
+    }
+});
+
+backToTopButton.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+// ... (existing JavaScript) ...
+
+// Navbar Toggle
+const sidebarToggle = document.getElementById('sidebar-toggle');
+const sidebarNav = document.getElementById('sidebar-nav');
+
+sidebarToggle.addEventListener('click', () => {
+    sidebarNav.classList.toggle('show');
 });

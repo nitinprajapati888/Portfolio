@@ -13,36 +13,43 @@
         <div class="row">
             <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
                 <div class="position-sticky pt-3">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#certificates">
-                                Certificates
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#projects">
-                                Projects
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#skills">
-                                Skills
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#resume">
-                                Resume
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#contact">
-                                Contact
-                            </a>
-                        </li>
-                    </ul>
+                    <div class="sidebar-brand">
+                        Your Name
+                        <button id="sidebar-toggle" class="sidebar-toggle"><i class="fas fa-bars"></i></button>
+                    </div>
+                    <div id="sidebar-nav" class="sidebar-nav">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#certificates">
+                                    <i class="fas fa-certificate"></i> Certificates
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#projects">
+                                    <i class="fas fa-project-diagram"></i> Projects
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#skills">
+                                    <i class="fas fa-tools"></i> Skills
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#resume">
+                                    <i class="fas fa-file-alt"></i> Resume
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#contact">
+                                    <i class="fas fa-envelope"></i> Contact
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </nav>
-
+        </div>
+    </div>
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <header class="container header-grid">
                     <div class="profile-info-section">
@@ -53,16 +60,15 @@
                         <img src="assets/profile-pic.jpg" alt="Your Profile" class="profile-pic">
                     </div>
                 </header>
-
                 <section class="container" id="certificates">
                     <h2>Certificates</h2>
-                    <div id="certificate-list"></div>
+                    <div id="certificate-list" class="box-container"></div>
                 </section>
-
+                
                 <section class="container" id="projects">
                     <h2>Projects</h2>
-                    <div id="project-list"></div>
-                    <div id="github-repos"></div>
+                    <div id="project-list" class="box-container"></div>
+                    <div id="github-repos" class="box-container"></div>
                 </section>
 
                 <section class="container" id="skills">
@@ -99,10 +105,10 @@
     </div>
     <footer class="container footer-social">
         <div class="social-links">
-            <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="https://linkedin.com/in/yourprofile" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="https://twitter.com/yourprofile" target="_blank"><i class="fab fa-twitter"></i></a>
-            <a href="https://instagram.com/yourprofile" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://github.com/nitinprajapati888/" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/nitin-prajapati27/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://x.com/NitinPra88811/" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/nitin.prajapati888/" target="_blank"><i class="fab fa-instagram"></i></a>
         </div>
     </footer>
     <script src="script.js"></script>
