@@ -53,18 +53,16 @@ fetch('data/skills.json')
     });
   });
 // ... (other parts of your script.js) ...
-
-// Load GitHub repositories
 function fetchGitHubRepos() {
-    const githubUsername = 'yourusername'; // Replace with your GitHub username
+    const githubUsername = 'yourusername';
     fetch(`https://api.github.com/users/${githubUsername}/repos`)
         .then(response => response.json())
         .then(repos => {
             const githubReposDiv = document.getElementById('github-repos');
             repos.forEach(repo => {
                 const card = document.createElement('div');
-                card.className = 'card';
-                card.style.width = '18rem'; // Set card width
+                card.className = 'card project-card'; // Added project-card class
+                card.style.width = '18rem';
 
                 card.innerHTML = `
                     <img src="${repo.owner.avatar_url}" class="card-img-top" alt="${repo.name} image">
@@ -73,16 +71,16 @@ function fetchGitHubRepos() {
                         <p class="card-text">${repo.description || 'No description'}</p>
                         <a href="${repo.html_url}" class="btn btn-primary" target="_blank">View on GitHub</a>
                     </div>
+                    <div class="project-details">
+                        <p><strong>Language:</strong> ${repo.language || 'N/A'}</p>
+                        <p><strong>Stars:</strong> ${repo.stargazers_count}</p>
+                        <p><strong>Forks:</strong> ${repo.forks_count}</p>
+                    </div>
                 `;
                 githubReposDiv.appendChild(card);
             });
         });
 }
-
-fetchGitHubRepos();
-
-// ... (remaining parts of your script.js) ... // Call the function to fetch and display repos
-
 //contact form, this portion will be expanded later.
 document.getElementById('contact-form').addEventListener('submit', function(event) {
     event.preventDefault();
