@@ -44,7 +44,7 @@ fetch('data/projects.json')
 
 // Load GitHub repositories
 function fetchGitHubRepos() {
-    const githubUsername = 'yourusername';
+    const githubUsername = 'nitinprajapati888';
     fetch(`https://api.github.com/users/${githubUsername}/repos`)
         .then(response => response.json())
         .then(repos => {

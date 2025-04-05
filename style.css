@@ -7,25 +7,6 @@ body {
     line-height: 1.6;
 }
 /* ... (existing CSS) ... */
-/* ... (existing CSS) ... */
-
-.sidebar .nav-link {
-    font-weight: 500;
-    color: #333;
-    transition: color 0.3s ease, background-color 0.3s ease; /* Added transition */
-    padding: 10px 15px;
-    border-radius: 5px;
-}
-
-.sidebar .nav-link.active {
-    color: #007bff;
-    background-color: #e9ecef; /* Add background color to active link */
-}
-
-.sidebar .nav-link:hover {
-    color: #007bff; /* Change color on hover */
-    background-color: #f0f0f0; /* Add background color on hover */
-}
 
 /* ... (rest of the CSS) ... */
 .main-content {
