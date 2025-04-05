@@ -1,18 +1,18 @@
 [
   {
-    "name": "Deloitte job simulation completion certificate",
+    "name": "Deloitte simulation",
     "organization": "Forage",
     "date": "2025-02-04",
     "pdf": "certificates/deloitte-certificate.pdf"
   },
   {
-    "name": "jio churna nalysis certificate",
+    "name": "jio churn analysis",
     "organization": "WscubeTech",
     "date": "2023-03-01",
     "pdf": "certificates/jio-certificate.pdf"
   },
   {
-    "name": "Machine Learning Certificate",
+    "name": "Machine Learning",
     "organization": "Another Online Learning Platform",
     "date": "2024-01-15",
     "pdf": "certificates/machine-learning-certificate.pdf"

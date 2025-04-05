@@ -363,4 +363,65 @@ footer.footer-social {
     font-size: 0.8em;
     margin-left: 5px;
   }
+  /* ... your existing CSS ... */
+
+.box-container {.box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive columns */
+    gap: 20px; /* Space between items */
+  }
+  
+  .box{
+    flex: 1 1 300px;
+  }
+  
+  /* Media Queries */
+  @media (max-width: 768px) {
+    .box{
+      flex: 1 1 250px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .box{
+      flex: 1 1 100%;
+    }
+  }
+/* Style the skills container */
+#skills-container {
+    margin-bottom: 20px;
+  }
+  
+  /* Style the category headings */
+  #skills-container h3 {
+    margin-top: 15px;
+    margin-bottom: 10px;
+  }
+  
+  /* Style the skill lists */
+  .skills-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  /* Style the skill items */
+  .skills-list li {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  }
+  
+  /* Style the icons */
+  .skills-list li i {
+    font-size: 1.2em;
+    color: #333;
+  }
   

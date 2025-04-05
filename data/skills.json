@@ -1,8 +1,23 @@
 [
-    { "skill": "HTML" },
-    { "skill": "CSS" },
-    { "skill": "JavaScript" },
-    { "skill": "Python" },
-    { "skill": "Bootstrap" },
-    { "skill": "MySQL"}
-  ]
+  {
+    "category": "Languages",
+    "skills": [
+      { "skill": "Python", "icon": "fab fa-python" },
+      { "skill": "JavaScript", "icon": "fab fa-js-square" },
+      { "skill": "HTML", "icon": "fab fa-html5" },
+      { "skill": "CSS", "icon": "fab fa-css3-alt" }
+    ]
+  },
+  {
+    "category": "Databases",
+    "skills": [
+      { "skill": "MySQL", "icon": "fas fa-database" }
+    ]
+  },
+  {
+    "category": "Tools & Frameworks",
+    "skills": [
+      { "skill": "Bootstrap", "icon": "fab fa-bootstrap" }
+    ]
+  }
+]

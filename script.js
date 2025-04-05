@@ -66,18 +66,42 @@ function fetchGitHubRepos() {
         });
 }
 
-// Load skills
 fetch('data/skills.json')
   .then(response => response.json())
-  .then(skills => {
-    const skillList = document.getElementById('skill-list');
-    skills.forEach(skill => {
-        const skillElement = document.createElement('div');
-        skillElement.className = "skill-bar";
-        skillElement.textContent = skill.skill;
-        skillList.appendChild(skillElement);
+  .then(skillCategories => {
+    const skillsContainer = document.getElementById('skills-container'); // Assuming you have a container for all skills
+
+    skillCategories.forEach(category => {
+      // Create category heading
+      const categoryHeading = document.createElement('h3');
+      categoryHeading.textContent = category.category;
+      skillsContainer.appendChild(categoryHeading);
+
+      // Create a list for the skills in this category
+      const skillsList = document.createElement('ul');
+      skillsList.className = 'skills-list'; // Add a class for styling
+      skillsContainer.appendChild(skillsList);
+
+      // Add each skill to the list
+      category.skills.forEach(skillObj => {
+        const skillElement = document.createElement('li');
+        skillElement.textContent = skillObj.skill;
+
+        // Create the icon element
+        const iconElement = document.createElement('i');
+        iconElement.className = skillObj.icon;
+
+        // Insert the icon before the text
+        skillElement.prepend(iconElement);
+
+        skillsList.appendChild(skillElement);
+      });
     });
+  })
+  .catch(error => {
+    console.error('Error fetching or processing skills:', error);
   });
+
 //contact form, this portion will be expanded later.
 document.getElementById('contact-form').addEventListener('submit', function(event) {
     event.preventDefault();
