@@ -101,12 +101,39 @@ fetch('data/skills.json')
   .catch(error => {
     console.error('Error fetching or processing skills:', error);
   });
-
 //contact form, this portion will be expanded later.
 document.getElementById('contact-form').addEventListener('submit', function(event) {
     event.preventDefault();
-    alert("contact form submission, this functionality will be added later");
+    // Get form values (optional, if you want to use them for validation)
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+
+    // Basic validation (you can add more complex validation here)
+    if (name.trim() === '' || email.trim() === '' || message.trim() === '') {
+        alert('Please fill in all fields.');
+        return;
+    }
+
+    // Submit the form using fetch (Formspree will handle the submission)
+    fetch(event.target.action, {
+        method: 'POST',
+        body: new FormData(event.target),
+        headers: {
+            'Accept': 'application/json'
+        }
+    }).then(response => {
+        if (response.ok) {
+            alert('Thank you for your message! I will get back to you soon.');
+            document.getElementById('contact-form').reset();
+        } else {
+            alert('There was a problem sending your message.');
+        }
+    }).catch(error => {
+        alert('There was a problem sending your message.');
+    });
 });
+
 // Smooth Scrolling and Active Link
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
