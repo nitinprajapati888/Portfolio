@@ -358,3 +358,9 @@ footer.footer-social {
     }
 }
 /* ... (rest of the CSS) ... */
+.pdf-link::after {
+    content: " (PDF)"; /* Add a visual cue */
+    font-size: 0.8em;
+    margin-left: 5px;
+  }
+  

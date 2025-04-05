@@ -4,24 +4,28 @@ fetch('data/introduction.json')
   .then(introduction => {
     document.getElementById('introduction-text').textContent = introduction.introduction;
   });
-// Load certificates
+
 fetch('data/certificates.json')
-    .then(response => response.json())
-    .then(certificates => {
-        const certificateList = document.getElementById('certificate-list');
-        certificates.forEach(certificate => {
-            const box = document.createElement('div');
-            box.className = 'box';
-            box.innerHTML = `
-                <img src="assets/certificate-placeholder.jpg" alt="${certificate.name} image">
-                <h3>${certificate.name}</h3>
-                <p>Organization: ${certificate.organization}</p>
-                <p>Date: ${certificate.date}</p>
-                <a href="#" class="view-link">View Certificate</a>
-            `;
-            certificateList.appendChild(box);
-        });
+  .then(response => response.json())
+  .then(certificates => {
+    const certificateList = document.getElementById('certificate-list'); // Assuming you have an element with this ID
+    certificates.forEach(certificate => {
+      const certificateElement = document.createElement('div');
+      certificateElement.className = 'certificate-item'; // Add a class for styling
+
+      certificateElement.innerHTML = `
+        <h3>${certificate.name}</h3>
+        <p>Organization: ${certificate.organization}</p>
+        <p>Date: ${certificate.date}</p>
+        <a href="${certificate.pdf}" target="_blank" class="pdf-link">View PDF</a>
+      `;
+      certificateList.appendChild(certificateElement);
     });
+  })
+  .catch(error => {
+    console.error('Error fetching or processing certificates:', error);
+  });
+
 
 // Load projects
 fetch('data/projects.json')
@@ -32,7 +36,6 @@ fetch('data/projects.json')
             const box = document.createElement('div');
             box.className = 'box';
             box.innerHTML = `
-                <img src="assets/project-placeholder.jpg" alt="${project.title} image">
                 <h3>${project.title}</h3>
                 <p>${project.description}</p>
                 <p>Technologies: ${project.technologies.join(', ')}</p>
