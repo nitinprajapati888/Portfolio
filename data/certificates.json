@@ -1,5 +1,17 @@
 [
   {
+    "name": "Machine Learning",
+    "organization": "Internshala",
+    "date": "2024-11-03",
+    "pdf": "certificates/machine-learning-certificate.pdf"
+  },
+  {
+    "name": "problem solving",
+    "organization": "Hackerrank",
+    "date": "2025-01-24",
+    "pdf": "certificates/problem-solving-certificate.pdf"
+  },
+  {
     "name": "Deloitte simulation",
     "organization": "Forage",
     "date": "2025-02-04",
@@ -16,17 +28,5 @@
     "organization": "WscubeTech",
     "date": "2025-03-01",
     "pdf": "certificates/jio-certificate.pdf"
-  },
-  {
-    "name": "Machine Learning",
-    "organization": "Internshala",
-    "date": "2024-11-03",
-    "pdf": "certificates/machine-learning-certificate.pdf"
-  },
-  {
-    "name": "problem solving",
-    "organization": "Hackerrank",
-    "date": "2025-01-24",
-    "pdf": "certificates/problem-solving-certificate.pdf"
   }
 ]
