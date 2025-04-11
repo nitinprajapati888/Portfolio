@@ -9,49 +9,82 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 </head>
-<body>
+<body id="page-top">
+    <!-- Sidebar Toggle Button (Hamburger Icon) -->
+    <button class="btn btn-primary position-fixed top-0 start-0 m-3 d-lg-none" id="sidebar-toggle" type="button" aria-label="Toggle sidebar">
+        <i class="fas fa-bars"></i>
+    </button>
+
     <div class="container-fluid">
         <div class="row">
-            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+            <!-- Sidebar -->
+            <nav id="sidebar" class="col-lg-2 d-lg-block bg-light sidebar collapse">
                 <div class="position-sticky pt-3">
-                    <div class="sidebar-brand">
-                        Nitin Prajapati
-                        <button id="sidebar-toggle" class="sidebar-toggle"><i class="fas fa-bars"></i></button>
-                    </div>
-                    <div id="sidebar-nav" class="sidebar-nav">
-                        <ul class="nav flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link active" href="#certificates">
-                                    <i class="fas fa-certificate"></i> Certificates
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#projects">
-                                    <i class="fas fa-project-diagram"></i> Projects
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#skills">
-                                    <i class="fas fa-tools"></i> Skills
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#resume">
-                                    <i class="fas fa-file-alt"></i> Resume
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#contact">
-                                    <i class="fas fa-envelope"></i> Contact
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+                    <h4 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                        <span>Navigation</span>
+                    </h4>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#page-top">
+                                <i class="fas fa-home me-2"></i> Home
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#certificates">
+                                <i class="fas fa-certificate me-2"></i> Certificates
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#projects">
+                                <i class="fas fa-project-diagram me-2"></i> Projects
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#skills">
+                                <i class="fas fa-cogs me-2"></i> Skills
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#resume">
+                                <i class="fas fa-file-alt me-2"></i> Resume
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">
+                                <i class="fas fa-envelope me-2"></i> Contact
+                            </a>
+                        </li>
+                    </ul>
+
+                    <h4 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                        <span>Connect</span>
+                    </h4>
+                    <ul class="nav flex-column mb-2">
+                         <li class="nav-item">
+                            <a class="nav-link" href="https://github.com/nitinprajapati888/" target="_blank">
+                                <i class="fab fa-github me-2"></i> GitHub
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.linkedin.com/in/nitin-prajapati27/" target="_blank">
+                                <i class="fab fa-linkedin me-2"></i> LinkedIn
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://x.com/NitinPra88811/" target="_blank">
+                                <i class="fab fa-twitter me-2"></i> Twitter/X
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.instagram.com/nitin.prajapati888/" target="_blank">
+                                <i class="fab fa-instagram me-2"></i> Instagram
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </nav>
-        </div>
-    </div>
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+
+            <main class="col-lg-10 ms-lg-auto col-12 px-md-4 main-content">
                 <header class="container header-grid">
                     <div class="profile-info-section">
                         <h1>Nitin Prajapati</h1>

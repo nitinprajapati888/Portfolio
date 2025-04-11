@@ -1,46 +1,193 @@
+/* --- General Styles --- */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
+    /* Removed margin/padding 0 as Bootstrap handles resets */
     background-color: #f8f9fa;
     color: #333;
     line-height: 1.6;
 }
-/* ... (existing CSS) ... */
 
-/* ... (rest of the CSS) ... */
-.main-content {
-    margin-left: 200px; /* Adjust margin based on sidebar width */
-    padding: 20px;
+.container {
+    /* Using Bootstrap's container fluid, so this might be less needed */
+    /* width: 90%; */
+    /* margin: auto; */
+    /* overflow: hidden; */
+    padding-top: 1rem; /* Add some top padding */
+    padding-bottom: 1rem; /* Add some bottom padding */
 }
 
-/* Media Queries for Responsive Design */
-@media (max-width: 768px) {
+/* --- Sidebar Styles --- */
+.sidebar {
+    position: fixed; /* Fixed position */
+    top: 0;
+    left: 0;
+    bottom: 0; /* Make it full height */
+    z-index: 100; /* Keep on top */
+    padding: 48px 0 0; /* Padding for content */
+    box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+    width: 250px; /* Define a fixed width */
+    transform: translateX(-100%); /* Hidden by default off-screen */
+    transition: transform 0.3s ease-in-out; /* Smooth transition */
+}
+
+/* Style for when sidebar is shown (using Bootstrap's 'show' class) */
+.sidebar.show {
+    transform: translateX(0); /* Slide in */
+}
+
+/* On large screens, sidebar is part of the grid, not fixed overlay */
+@media (min-width: 992px) { /* Corresponds to lg breakpoint */
     .sidebar {
-        position: static;
-        height: auto;
-        padding: 0;
+        position: static; /* Reset position */
+        height: calc(100vh - 48px); /* Adjust height if needed, considering potential top navbar */
+        width: auto; /* Let Bootstrap grid handle width */
+        transform: translateX(0); /* Always visible */
+        box-shadow: none; /* Remove shadow if not desired */
+        padding-top: 20px; /* Adjust padding */
+        /* Ensure it doesn't collapse */
+        display: block !important;
+        visibility: visible !important;
     }
 
     .main-content {
-        margin-left: 0;
+        /* No extra margin needed as grid handles layout */
+    }
+
+    #sidebar-toggle {
+        display: none; /* Hide toggle button on large screens */
     }
 }
-.container {
-    width: 90%;
-    margin: auto;
-    overflow: hidden;
-    padding: 20px 0;
-}
-/* ... (existing CSS) ... */
 
+.sidebar-sticky {
+    position: relative;
+    top: 0;
+    height: calc(100vh - 48px); /* Adjust height based on padding/header */
+    padding-top: .5rem;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents */
+}
+
+.sidebar .nav-link {
+    font-weight: 500;
+    color: #333;
+    padding: .75rem 1rem; /* Adjust padding */
+    display: flex; /* Align icon and text */
+    align-items: center;
+    transition: background-color 0.2s ease, color 0.2s ease; /* Hover transition */
+}
+
+.sidebar .nav-link .fa,
+.sidebar .nav-link .fab,
+.sidebar .nav-link .fas {
+    width: 20px; /* Fixed width for icons */
+    text-align: center;
+    margin-right: 0.5rem; /* Space between icon and text */
+    color: #6c757d; /* Muted icon color */
+    transition: color 0.2s ease;
+}
+
+.sidebar .nav-link:hover {
+    color: #007bff; /* Link color on hover */
+    background-color: #e9ecef; /* Background hover */
+}
+
+.sidebar .nav-link:hover .fa,
+.sidebar .nav-link:hover .fab,
+.sidebar .nav-link:hover .fas {
+    color: #007bff; /* Icon color on hover */
+}
+
+.sidebar .nav-link.active {
+    color: #007bff;
+    background-color: #ddeeff; /* Highlight active link */
+}
+
+.sidebar .nav-link.active .fa,
+.sidebar .nav-link.active .fab,
+.sidebar .nav-link.active .fas {
+    color: #007bff;
+}
+
+.sidebar-heading {
+    font-size: .75rem;
+    text-transform: uppercase;
+    color: #6c757d !important; /* Ensure muted color */
+}
+
+/* --- Toggle Button --- */
+#sidebar-toggle {
+    z-index: 101; /* Above sidebar */
+    /* Add specific styling if default btn-primary isn't desired */
+}
+/* --- Sidebar Styles --- */
+
+/* Keep your existing base #sidebar styles for the mobile overlay */
+#sidebar {
+    position: fixed;
+    /* ... other existing styles like width, z-index, transform, transition ... */
+    height: 100vh; /* Ensure it takes full viewport height initially */
+    overflow-y: auto; /* Allow internal scrolling if content is too long */
+  }
+  
+  /* State when Bootstrap adds the .show class */
+  #sidebar.show {
+    transform: translateX(0);
+    visibility: visible;
+  }
+  
+  
+  /* --- Styles for Larger Screens (Desktop View) --- */
+  @media (min-width: 992px) { /* Or your chosen large breakpoint */
+    #sidebar {
+      /* --- Key Changes Here --- */
+      position: sticky;   /* Change from 'static' or 'fixed' */
+      top: 0;             /* Stick to the very top of the viewport */
+      height: 100vh;      /* Make the sticky container full viewport height */
+      /* Optional: Adjust height if you have a fixed header */
+      /* height: calc(100vh - YOUR_HEADER_HEIGHT_IN_PX); */
+      overflow-y: auto;   /* Allow scrolling *within* the sidebar if needed */
+      /* --- End Key Changes --- */
+  
+      /* Keep other necessary desktop styles */
+      transform: translateX(0); /* Ensure it's always visible */
+      box-shadow: none;
+      width: auto; /* Let grid handle width */
+      visibility: visible;
+      /* Reset padding if needed for sticky position */
+      padding-top: 1rem; /* Example padding */
+    }
+  
+    /* Hide the toggle button on large screens */
+    #sidebar-toggle {
+      display: none;
+    }
+  
+    /* Ensure main content area still takes up the remaining space */
+    .main-content { /* Or whatever class you use for the main area */
+       /* Adjust padding/margin if needed, but Bootstrap's grid should handle layout */
+    }
+  }
+  
+  /* Keep your optional overlay styles for smaller screens */
+  /* ... */
+  
+/* --- Main Content Area --- */
+.main-content {
+    padding-top: 1.5rem; /* Add padding */
+    transition: margin-left .3s ease-in-out; /* Smooth transition if needed */
+}
+
+/* --- Header --- */
 header.header-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    /* Keep existing grid styles */
+    grid-template-columns: 1fr auto; /* Adjust columns for profile pic */
     align-items: center;
     background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
     color: white;
     padding: 2em;
+    border-radius: 8px; /* Optional: rounded corners */
+    margin-bottom: 2rem; /* Space below header */
 }
 
 .profile-info-section {
@@ -48,281 +195,52 @@ header.header-grid {
 }
 
 .profile-image-section {
-    text-align: right; /* Align profile image to the right */
-}
-
-.profile-pic {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 0; /* Remove bottom margin */
-}
-
-/* ... (rest of the CSS) ... */
-.social-links {
     text-align: right;
 }
 
-.social-links a {
-    color: white;
-    font-size: 1.8em;
-    margin: 0 15px;
-    transition: color 0.3s ease;
+.profile-pic {
+    width: 120px; /* Slightly smaller */
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid white; /* Optional border */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Optional shadow */
 }
 
-.social-links a:hover {
-    color: #ddd;
+/* --- Section Headings --- */
+section h2 {
+    margin-bottom: 1.5rem; /* Space below headings */
+    color: #343a40; /* Darker heading color */
+    border-bottom: 2px solid #dee2e6; /* Separator line */
+    padding-bottom: 0.5rem;
 }
 
-/* ... (rest of the CSS remains the same) ... */
-
-/* Media Queries for Responsive Design */
-@media (max-width: 768px) {
-    header.header-grid {
-        grid-template-columns: 1fr; /* Single column on smaller screens */
-        text-align: center;
-    }
-
-    .profile-section {
-        text-align: center;
-    }
-
-    .social-links {
-        text-align: center;
-    }
-
-    .profile-pic {
-        margin: 20px auto;
-    }
-}
-.social-links {
-    margin-top: 20px;
-}
-
-.social-links a {
-    color: white;
-    font-size: 1.8em;
-    margin: 0 15px;
-    transition: color 0.3s ease;
-}
-
-.social-links a:hover {
-    color: #ddd;
-}
-/* ... (existing CSS) ... */
-
-#project-list .card {
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin-bottom: 20px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-#project-list .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-#project-list .card h3 {
-    color: #6a11cb;
-    margin-bottom: 10px;
-}
-
-#project-list .card p {
-    margin-bottom: 10px;
-}
-
-#project-list .card a {
-    color: #007bff;
-    text-decoration: none;
-}
-#certificate-list .card {
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin-bottom: 20px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-#certificate-list .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-#certificate-list .card h3 {
-    color: #6a11cb;
-    margin-bottom: 10px;
-}
-#certificate-list .card p {
-    margin-bottom: 10px;
-}
-#certificate-list .card a {
-    color: #007bff;
-    text-decoration: none;
-}
-
-/* ... (existing CSS) ... */
-
-#github-repos .card {
-    margin-bottom: 20px;
-}
-
-#github-repos .card img {
-    object-fit: cover; /* Ensure images fit nicely */
-    height: 200px; /* Set a fixed height for images */
-} 
-#skill-list .skill-bar {
-    background-color: #e9ecef;
-    padding: 8px 15px;
-    border-radius: 5px;
-    margin-right: 10px;
-    display: inline-block;
-    margin-bottom:10px;
-
-}
-
-#contact-form .btn-primary {
-    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-    border: none;
-    padding: 10px 20px;
-    font-size: 1em;
-    transition: background 0.3s ease;
-}
-
-#contact-form .btn-primary:hover {
-    background: linear-gradient(135deg, #2575fc 0%, #6a11cb 100%);
-}
-
-#resume .btn-primary{
-    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-    border: none;
-    padding: 10px 20px;
-    font-size: 1em;
-    transition: background 0.3s ease;
-}
-
-#resume .btn-primary:hover {
-    background: linear-gradient(135deg, #2575fc 0%, #6a11cb 100%);
-}
-/* ... (existing CSS) ... */
-
-footer.footer-social {
-    text-align: center;
-    padding: 20px 0;
-    background-color: #f4f4f4;
-}
-
-.footer-social .social-links a {
-    color: #333;
-    font-size: 1.8em;
-    margin: 0 15px;
-    transition: color 0.3s ease;
-}
-
-.footer-social .social-links a:hover {
-    color: #6a11cb;
-}
-/* ... (existing CSS) ... */
-
-.project-card {
-    position: relative;
-    overflow: hidden;
-}
-
-.project-details {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transform: translateY(100%);
-    transition: transform 0.3s ease;
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-.project-card:hover .project-details {
-    transform: translateY(0);
-}
-
-.project-details strong {
-    color: #007bff;
-}
-/* ... (existing CSS) ... */
-/* --- Enhancements for Skills Section --- */
-
-/* Add transitions for smooth hover effects on skill items */
-.skills-list li {
-    background-color: #f0f0f0;
-    padding: 10px 15px; /* Slightly adjust padding if needed */
-    border-radius: 5px;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px; /* Slightly increase gap */
-    transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    cursor: default; /* Indicate it's not clickable unless it links somewhere */
-  }
-  
-  /* Style the icons */
-  .skills-list li i {
-    font-size: 1.2em;
-    color: #555; /* Slightly darker icon color */
-    transition: color 0.2s ease-in-out;
-  }
-  
-  /* Hover effect for skill items */
-  .skills-list li:hover {
-    background-color: #e0e0e0; /* Slightly darker background on hover */
-    transform: translateY(-3px); /* Lift effect */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
-  }
-  
-  /* Optional: Change icon color on hover */
-  .skills-list li:hover i {
-    color: #007bff; /* Change icon color to a highlight color */
-  }
-  
-  /* Style the category headings (if not already styled) */
-  #skills-container h3 {
-    margin-top: 25px; /* Add more space above category titles */
-    margin-bottom: 15px;
-    color: #6a11cb; /* Match heading color used elsewhere */
-    border-bottom: 2px solid #eee; /* Add a subtle separator */
-    padding-bottom: 5px;
-  }
-
+/* --- Box Container & Box (Cards) --- */
+/* Consolidate common card styles */
 .box-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjust minmax */
+    gap: 25px; /* Slightly larger gap */
 }
 
-.box {
+.box { /* General card style */
     background: white;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08); /* Softer shadow */
     padding: 20px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex; /* Use flexbox for better internal alignment */
+    flex-direction: column; /* Stack content vertically */
 }
 
 .box:hover {
     transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
 }
 
 .box img {
     width: 100%;
-    height: 200px;
+    height: 180px; /* Adjust image height */
     object-fit: cover;
     margin-bottom: 15px;
     border-radius: 5px;
@@ -331,163 +249,195 @@ footer.footer-social {
 .box h3 {
     color: #6a11cb;
     margin-bottom: 10px;
+    font-size: 1.15rem; /* Adjust font size */
 }
 
 .box p {
-    margin-bottom: 10px;
+    margin-bottom: 15px; /* Space below paragraph */
+    flex-grow: 1; /* Allow paragraph to take available space */
+    color: #555; /* Slightly lighter text */
+    font-size: 0.95rem;
 }
 
-.box .view-link {
+.box .view-link,
+.box a:not(.btn) { /* Style links within cards */
     color: #007bff;
     text-decoration: none;
-}
-/* ... (existing CSS) ... */
-
-.sidebar {
-    position: fixed;
-    top: 0;
-    height: 100vh;
-    padding-top: 20px;
-    background-color: #f8f9fa; /* Light background */
-    border-right: 1px solid #ddd; /* Add a subtle border */
-}
-
-.sidebar-brand {
-    padding: 15px;
-    font-weight: bold;
-    font-size: 1.2em;
-    text-align: center;
-    border-bottom: 1px solid #ddd;
-    color: #333; /* Darker text */
-}
-
-.sidebar .nav-link {
     font-weight: 500;
-    color: #333;
-    transition: color 0.3s ease, background-color 0.3s ease;
-    padding: 12px 15px;
-    border-radius: 5px;
-    display: flex; /* Use flexbox for icon and text alignment */
-    align-items: center;
+    margin-top: auto; /* Push link to bottom if using flex */
 }
 
-.sidebar .nav-link i {
-    margin-right: 10px; /* Add space between icon and text */
+.box .view-link:hover,
+.box a:not(.btn):hover {
+    text-decoration: underline;
 }
 
-.sidebar .nav-link.active {
-    color: #007bff;
-    background-color: #e9ecef;
-    border-left: 3px solid #007bff; /* Highlight active link */
+/* Remove redundant #project-list .card, #certificate-list .card styles */
+/* They are now covered by the general .box styles */
+
+/* --- GitHub Repos Specific --- */
+#github-repos .box img {
+    /* Keep specific image height if needed */
+     height: 180px;
 }
 
-.sidebar .nav-link:hover {
-    color: #007bff;
-    background-color: #f0f0f0;
-}
-/* ... (existing CSS) ... */
-
-.sidebar-toggle {
-    background: none;
-    border: none;
-    font-size: 1.5em;
-    cursor: pointer;
-    display: none; /* Initially hidden on larger screens */
-}
-
-.sidebar-nav {
-    transition: max-height 0.3s ease;
-    overflow: hidden;
-}
-
-/* Media Queries for Responsive Design */
-@media (max-width: 768px) {
-    .sidebar {
-        position: static;
-        height: auto;
-        padding: 0;
-    }
-
-    .sidebar-toggle {
-        display: block; /* Show toggle button on smaller screens */
-    }
-
-    .sidebar-nav {
-        max-height: 0; /* Initially collapsed */
-    }
-
-    .sidebar-nav.show {
-        max-height: 500px; /* Adjust as needed */
-    }
-
-    .main-content {
-        margin-left: 0; /* Remove left margin on smaller screens */
-    }
-}
-/* ... (rest of the CSS) ... */
-.pdf-link::after {
-    content: " (PDF)"; /* Add a visual cue */
-    font-size: 0.8em;
-    margin-left: 5px;
-  }
-  /* ... your existing CSS ... */
-
-.box-container {.box-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive columns */
-    gap: 20px; /* Space between items */
-  }
-  
-  .box{
-    flex: 1 1 300px;
-  }
-  
-  /* Media Queries */
-  @media (max-width: 768px) {
-    .box{
-      flex: 1 1 250px;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .box{
-      flex: 1 1 100%;
-    }
-  }
-/* Style the skills container */
+/* --- Skills Section --- */
 #skills-container {
     margin-bottom: 20px;
-  }
-  
-  /* Style the category headings */
-  #skills-container h3 {
-    margin-top: 15px;
-    margin-bottom: 10px;
-  }
-  
-  /* Style the skill lists */
-  .skills-list {
+}
+
+#skills-container h3 {
+    margin-top: 25px;
+    margin-bottom: 15px;
+    color: #6a11cb;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 5px;
+    font-size: 1.1rem; /* Adjust size */
+}
+
+.skills-list {
     list-style: none;
     padding: 0;
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
-  }
-  
-  /* Style the skill items */
-  .skills-list li {
-    background-color: #f0f0f0;
-    padding: 10px;
-    border-radius: 5px;
+    gap: 12px; /* Adjust gap */
+}
+
+.skills-list li {
+    background-color: #e9ecef; /* Slightly different background */
+    padding: 8px 15px; /* Adjust padding */
+    border-radius: 20px; /* Pill shape */
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 5px;
-  }
-  
-  /* Style the icons */
-  .skills-list li i {
-    font-size: 1.2em;
-    color: #333;
-  }
+    gap: 8px;
+    font-size: 0.9rem; /* Adjust font size */
+    transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    cursor: default;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.skills-list li i {
+    font-size: 1.1em;
+    color: #6a11cb; /* Match theme color */
+    transition: color 0.2s ease-in-out;
+}
+
+.skills-list li:hover {
+    background-color: #d1d9e1;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Buttons (Contact/Resume) --- */
+/* Consolidate button styles */
+#contact-form .btn-primary,
+#resume .btn-primary {
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    border: none;
+    padding: 10px 25px; /* Adjust padding */
+    font-size: 1em;
+    transition: background 0.3s ease, transform 0.2s ease;
+    border-radius: 5px; /* Add border-radius */
+    color: white; /* Ensure text is white */
+}
+
+#contact-form .btn-primary:hover,
+#resume .btn-primary:hover {
+    background: linear-gradient(135deg, #2575fc 0%, #6a11cb 100%);
+    transform: translateY(-2px); /* Add slight lift on hover */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* --- Footer --- */
+footer.footer-social {
+    text-align: center;
+    padding: 30px 0 20px 0; /* Adjust padding */
+    background-color: transparent; /* Remove background if desired */
+    border-top: 1px solid #dee2e6; /* Use border from main */
+    margin-top: 3rem; /* Ensure space above footer */
+}
+
+.footer-social .social-links a {
+    color: #6c757d; /* Muted color */
+    font-size: 1.6em; /* Adjust size */
+    margin: 0 12px;
+    transition: color 0.3s ease, transform 0.2s ease;
+    display: inline-block; /* Needed for transform */
+}
+
+.footer-social .social-links a:hover {
+    color: #6a11cb; /* Theme color on hover */
+    transform: translateY(-3px); /* Lift effect */
+}
+
+.footer-social p {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 991.98px) { /* Below lg breakpoint */
+    .main-content {
+         /* No margin needed as sidebar overlays */
+    }
+
+    /* Optional: Add an overlay when sidebar is open on small screens */
+    body.sidebar-open::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 99; /* Below sidebar, above content */
+    }
+}
+
+@media (max-width: 768px) {
+    header.header-grid {
+        grid-template-columns: 1fr; /* Stack header elements */
+        text-align: center;
+        padding: 1.5em;
+    }
+
+    .profile-info-section {
+        text-align: center;
+        margin-bottom: 1rem; /* Space below text */
+    }
+
+    .profile-image-section {
+        text-align: center;
+    }
+
+    .profile-pic {
+        width: 100px; /* Smaller pic on mobile */
+        height: 100px;
+        margin: 0 auto; /* Center */
+    }
+
+    .box-container {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjust for smaller cards */
+    }
+}
+
+@media (max-width: 576px) {
+    .box-container {
+        grid-template-columns: 1fr; /* Single column on very small screens */
+    }
+     .sidebar {
+        width: 220px; /* Slightly narrower sidebar on small screens */
+    }
+}
+
+/* Remove duplicate/conflicting rules */
+/* Removed duplicate .social-links rules */
+/* Removed duplicate .box-container rules */
+/* Removed duplicate .skills-list li styles */
+/* Removed .main-content margin-left rule (handled by grid/overlay) */
+/* Removed old .project-card/.project-details hover effect if not used */
+/* Removed #skill-list .skill-bar if replaced by .skills-list li */
+

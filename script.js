@@ -1,3 +1,102 @@
+document.addEventListener('DOMContentLoaded', () => {
+
+    // --- Helper: Safely Get Element by ID ---
+    function getElement(id, description = 'Element') {
+        const element = document.getElementById(id);
+        if (!element) {
+            // Log a warning instead of an error to avoid breaking other scripts if element is optional
+            console.warn(`${description} with ID '${id}' not found. Check your HTML.`);
+        }
+        return element;
+    }
+
+    // --- Sidebar Functionality ---
+    const sidebar = getElement('sidebar', 'Sidebar Navigation');
+    const sidebarToggle = getElement('sidebar-toggle', 'Sidebar Toggle Button');
+    const sidebarLinks = sidebar ? sidebar.querySelectorAll('.nav-link') : []; // Get all links within the sidebar
+
+    let sidebarCollapseInstance = null;
+
+    // Check if Bootstrap's Collapse component is available and the sidebar element exists
+    if (sidebar && typeof bootstrap !== 'undefined' && bootstrap.Collapse) {
+        // Initialize Bootstrap Collapse, but don't toggle it automatically on init
+        sidebarCollapseInstance = new bootstrap.Collapse(sidebar, { toggle: false });
+    } else if (sidebar && (typeof bootstrap === 'undefined' || !bootstrap.Collapse)) {
+        // Log if Bootstrap Collapse isn't found, as toggle might rely on it
+        console.warn('Bootstrap Collapse component not found or not loaded. Sidebar toggle might require manual class handling or Bootstrap JS.');
+    }
+
+    // Function to explicitly close the sidebar (useful on smaller screens)
+    const closeSidebar = () => {
+        // Only attempt to close if it's likely an overlay (screen < 992px),
+        // the sidebar exists, it's currently shown, and we have the Bootstrap instance
+        if (window.innerWidth < 992 && sidebar && sidebar.classList.contains('show') && sidebarCollapseInstance) {
+            sidebarCollapseInstance.hide();
+            // The 'hide.bs.collapse' event listener below will handle removing the body class
+        }
+    };
+
+    // --- Event Listeners ---
+
+    // 1. Toggle sidebar on button click
+    if (sidebarToggle && sidebarCollapseInstance) {
+        sidebarToggle.addEventListener('click', () => {
+            // Use Bootstrap's toggle method
+            sidebarCollapseInstance.toggle();
+        });
+    } else if (sidebarToggle && !sidebarCollapseInstance) {
+        // Fallback: If Bootstrap JS isn't used, you might toggle a custom class
+        // sidebarToggle.addEventListener('click', () => {
+        //    sidebar.classList.toggle('is-active'); // Example custom class
+        //    document.body.classList.toggle('sidebar-open'); // Toggle overlay class manually
+        // });
+        console.warn('Sidebar toggle button found, but Bootstrap Collapse instance is missing. Toggle might not work.');
+    }
+
+    // 2. Add/Remove body class when sidebar is shown/hidden (for overlay effect on small screens)
+    if (sidebar) {
+        sidebar.addEventListener('show.bs.collapse', () => {
+            // Add overlay class only on smaller viewports
+            if (window.innerWidth < 992) {
+                document.body.classList.add('sidebar-open');
+            }
+        });
+
+        sidebar.addEventListener('hide.bs.collapse', () => {
+            // Always remove the overlay class when sidebar hides
+            document.body.classList.remove('sidebar-open');
+        });
+    }
+
+    // 3. Close sidebar when clicking an internal link inside it (on small screens)
+    sidebarLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            // Check if it's an internal hash link (starts with #)
+            if (link.getAttribute('href')?.startsWith('#')) {
+                // Close the sidebar after a short delay to allow navigation/scroll to start
+                setTimeout(closeSidebar, 150);
+            }
+            // External links or non-hash links won't automatically close the sidebar
+        });
+    });
+
+    // 4. Close sidebar when clicking outside of it (on small screens)
+    document.addEventListener('click', (event) => {
+        // Check if the sidebar exists, is currently shown, and screen is small
+        if (window.innerWidth < 992 && sidebar && sidebar.classList.contains('show')) {
+            // Check if the click target is outside the sidebar AND outside the toggle button
+            const isClickInsideSidebar = sidebar.contains(event.target);
+            // Ensure sidebarToggle exists before checking contains
+            const isClickOnToggler = sidebarToggle ? sidebarToggle.contains(event.target) : false;
+
+            if (!isClickInsideSidebar && !isClickOnToggler) {
+                closeSidebar();
+            }
+        }
+    });
+    // --- End Sidebar Functionality ---
+});
+
 // Load introduction
 fetch('data/introduction.json')
   .then(response => response.json())
@@ -169,11 +268,3 @@ backToTopButton.addEventListener('click', () => {
     });
 });
 // ... (existing JavaScript) ...
-
-// Navbar Toggle
-const sidebarToggle = document.getElementById('sidebar-toggle');
-const sidebarNav = document.getElementById('sidebar-nav');
-
-sidebarToggle.addEventListener('click', () => {
-    sidebarNav.classList.toggle('show');
-});
