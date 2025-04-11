@@ -1,26 +1,56 @@
 [
+  {
+    "title": "Churn Analysis",
+    "description": "Built a Python-based tool for analyzing large datasets.",
+    "technologies": ["Python", "Pandas", "NumPy", "Matplotlib", "Seaborn"],
+    "link": "https://github.com/nitinprajapati888/Churn_Analysis.git"
+  },
+  {
+    "title": "Data Analyst Automation",
+    "description": "Built a Python-based tool for analyzing large datasets.",
+    "technologies": ["Python", "Pandas", "NumPy", "scikit-learn", "Matplotlib", "Seaborn", "Fpdf", "Ongoing"],
+    "link": "https://github.com/nitinprajapati888/Data_Analyst_Automation.git"
+  },
+  {
+    "title": "House Prices",
+    "description": "Advanced Regression Techniques.",
+    "technologies": ["Python", "Pandas", "NumPy", "Matplotlib", "Seaborn", "Ongoing"],
+    "link": "https://github.com/nitinprajapati888/Data_Analyst_Automation.git"
+  },
     {
-      "title": "Churn Analysis",
-      "description": "Built a Python-based tool for analyzing large datasets.",
-      "technologies": ["Python", "Pandas", "NumPy", "scikit-learn"],
-      "link": "https://github.com/nitinprajapati888/Churn_Analysis.git"
-    },
-    {
-      "title": "Data Analyst Automation",
-      "description": "Built a Python-based tool for analyzing large datasets.",
-      "technologies": ["Python", "Pandas", "NumPy", "scikit-learn"],
-      "link": "https://github.com/nitinprajapati888/Data_Analyst_Automation.git"
-    },
-    {
-      "title": "House Prices",
-      "description": "Advanced Regression Techniques.",
-      "technologies": ["Python", "Pandas", "NumPy", "Matplotlib", "Seaborn"],
-      "link": "https://github.com/nitinprajapati888/Data_Analyst_Automation.git"
-    },
-      {
-      "title": "Portfolio Website",
-      "description": "A personal portfolio website to showcase skills and projects.",
-      "technologies": ["HTML", "CSS", "JavaScript", "Bootstrap"],
-      "link": "https://github.com/nitinprajapati888/Portfolio.git"
-    }
-  ]
+    "title": "Portfolio Website",
+    "description": "A personal portfolio website to showcase skills and projects.",
+    "technologies": ["HTML", "CSS", "JavaScript", "Bootstrap"],
+    "link": "https://github.com/nitinprajapati888/Portfolio.git"
+  },
+  {
+    "title": "SFC STORE FRONTEND PROJECT",
+    "description": "React.js powered frontend for SFC Store, featuring modern UI components.",
+    "technologies": ["Reactjs", "HTML", "CSS", "JavaScript", "Bootstrap"],
+    "link": "https://github.com/nitinprajapati888/SFC-STORE-FRONTEND-PROJECT.git"
+  },
+  {
+    "title": "Driver Drowsiness Detection",
+    "description": "Real-time system using computer vision to detect driver drowsiness.",
+    "technologies": ["Python", "OpenCV", "Keras", "TensorFlow"],
+    "link": "https://github.com/nitinprajapati888/Drowsyness_Driver.git"
+  },
+  {
+    "title": "Object Detection",
+    "description": "Implemented object detection using computer vision techniques.",
+    "technologies": ["Python", "OpenCV", "TensorFlow"],
+    "link": "https://github.com/nitinprajapati888/OBJECT_DETECTION.git"
+  },
+  {
+    "title": "License Plate Detection (Camera)",
+    "description": "Real-time license plate detection from camera feed using OCR.",
+    "technologies": ["Python", "OpenCV", "Tesseract"],
+    "link": "https://github.com/nitinprajapati888/Number_plate_detection_using_camera.git"
+  },
+  {
+    "title": "License Plate Detection (Image)",
+    "description": "License plate detection and recognition from static images using OCR.",
+    "technologies": ["Python", "OpenCV", "Tesseract"],
+    "link": "https://github.com/nitinprajapati888/Number_plate_detection_using_imeage.git"
+  }
+]

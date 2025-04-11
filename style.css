@@ -48,11 +48,6 @@ body {
         display: block !important;
         visibility: visible !important;
     }
-
-    .main-content {
-        /* No extra margin needed as grid handles layout */
-    }
-
     #sidebar-toggle {
         display: none; /* Hide toggle button on large screens */
     }
@@ -163,9 +158,7 @@ body {
     }
   
     /* Ensure main content area still takes up the remaining space */
-    .main-content { /* Or whatever class you use for the main area */
-       /* Adjust padding/margin if needed, but Bootstrap's grid should handle layout */
-    }
+    
   }
   
   /* Keep your optional overlay styles for smaller screens */
@@ -380,10 +373,6 @@ footer.footer-social {
 
 /* --- Responsive Adjustments --- */
 @media (max-width: 991.98px) { /* Below lg breakpoint */
-    .main-content {
-         /* No margin needed as sidebar overlays */
-    }
-
     /* Optional: Add an overlay when sidebar is open on small screens */
     body.sidebar-open::before {
         content: '';
