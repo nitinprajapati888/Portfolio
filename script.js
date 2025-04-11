@@ -10,16 +10,16 @@ fetch('data/certificates.json')
   .then(certificates => {
     const certificateList = document.getElementById('certificate-list'); // Assuming you have an element with this ID
     certificates.forEach(certificate => {
-      const certificateElement = document.createElement('div');
-      certificateElement.className = 'certificate-item'; // Add a class for styling
+      const box = document.createElement('div');
+      box.className = 'box'; // Add a class for styling
 
-      certificateElement.innerHTML = `
+      box.innerHTML = `
         <h3>${certificate.name}</h3>
         <p>Organization: ${certificate.organization}</p>
         <p>Date: ${certificate.date}</p>
         <a href="${certificate.pdf}" target="_blank" class="pdf-link">View PDF</a>
       `;
-      certificateList.appendChild(certificateElement);
+      certificateList.appendChild(box);
     });
   })
   .catch(error => {

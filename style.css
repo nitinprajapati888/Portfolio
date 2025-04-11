@@ -112,7 +112,7 @@ header.header-grid {
 }
 /* ... (existing CSS) ... */
 
-#project-list .card, #certificate-list .card {
+#project-list .card {
     background: white;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -121,23 +121,51 @@ header.header-grid {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-#project-list .card:hover, #certificate-list .card:hover {
+#project-list .card:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-#project-list .card h3, #certificate-list .card h3 {
+#project-list .card h3 {
     color: #6a11cb;
     margin-bottom: 10px;
 }
 
-#project-list .card p, #certificate-list .card p {
+#project-list .card p {
     margin-bottom: 10px;
 }
 
 #project-list .card a {
     color: #007bff;
     text-decoration: none;
+}
+#certificate-list .card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+#certificate-list .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+#certificate-list .card h3 {
+    color: #6a11cb;
+    margin-bottom: 10px;
+}
+#certificate-list .card p {
+    margin-bottom: 10px;
+}
+#certificate-list .card a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+#certificate-list .card {
+    border: 5px solid red !important; /* Temporary test */
+    /* ... other styles ... */
 }
 /* ... (existing CSS) ... */
 
@@ -423,4 +451,4 @@ footer.footer-social {
   .skills-list li i {
     font-size: 1.2em;
     color: #333;
-  }  
+  }

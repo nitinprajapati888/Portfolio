@@ -2,22 +2,38 @@
   {
     "category": "Languages",
     "skills": [
-      { "skill": "Python", "icon": "fab fa-python" },
-      { "skill": "JavaScript", "icon": "fab fa-js-square" },
+      { "skill": "C", "icon": "fas fa-code" },
       { "skill": "HTML", "icon": "fab fa-html5" },
-      { "skill": "CSS", "icon": "fab fa-css3-alt" }
+      { "skill": "CSS", "icon": "fab fa-css3-alt" },
+      { "skill": "JavaScript", "icon": "fab fa-js-square" },
+      { "skill": "PHP", "icon": "fab fa-php" },
+      { "skill": "Python", "icon": "fab fa-python" }
+    ]
+  },
+  {
+    "category": "Libraries",
+    "skills": [
+      { "skill": "NumPy", "icon": "fas fa-calculator" },
+      { "skill": "Pandas", "icon": "fas fa-table" },
+      { "skill": "Matplotlib", "icon": "fas fa-chart-bar" },
+      { "skill": "Seaborn", "icon": "fas fa-chart-line" },
+      { "skill": "Scikit-learn", "icon": "fas fa-tools" },
+      { "skill": "OpenCV", "icon": "fas fa-camera-retro" }
+    ]
+  },
+  {
+    "category": "Tools & Frameworks",
+    "skills": [
+      { "skill": "Bootstrap", "icon": "fab fa-bootstrap" },
+      { "skill": "React", "icon": "fab fa-react" },
+      { "skill": "Power BI", "icon": "fas fa-chart-bar" },
+      { "skill": "Tableau", "icon": "fas fa-chart-pie" }
     ]
   },
   {
     "category": "Databases",
     "skills": [
       { "skill": "MySQL", "icon": "fas fa-database" }
-    ]
-  },
-  {
-    "category": "Tools & Frameworks",
-    "skills": [
-      { "skill": "Bootstrap", "icon": "fab fa-bootstrap" }
     ]
   }
 ]
