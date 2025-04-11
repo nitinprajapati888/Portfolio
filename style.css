@@ -163,10 +163,6 @@ header.header-grid {
     text-decoration: none;
 }
 
-#certificate-list .card {
-    border: 5px solid red !important; /* Temporary test */
-    /* ... other styles ... */
-}
 /* ... (existing CSS) ... */
 
 #github-repos .card {
@@ -261,6 +257,49 @@ footer.footer-social {
     color: #007bff;
 }
 /* ... (existing CSS) ... */
+/* --- Enhancements for Skills Section --- */
+
+/* Add transitions for smooth hover effects on skill items */
+.skills-list li {
+    background-color: #f0f0f0;
+    padding: 10px 15px; /* Slightly adjust padding if needed */
+    border-radius: 5px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Slightly increase gap */
+    transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    cursor: default; /* Indicate it's not clickable unless it links somewhere */
+  }
+  
+  /* Style the icons */
+  .skills-list li i {
+    font-size: 1.2em;
+    color: #555; /* Slightly darker icon color */
+    transition: color 0.2s ease-in-out;
+  }
+  
+  /* Hover effect for skill items */
+  .skills-list li:hover {
+    background-color: #e0e0e0; /* Slightly darker background on hover */
+    transform: translateY(-3px); /* Lift effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  }
+  
+  /* Optional: Change icon color on hover */
+  .skills-list li:hover i {
+    color: #007bff; /* Change icon color to a highlight color */
+  }
+  
+  /* Style the category headings (if not already styled) */
+  #skills-container h3 {
+    margin-top: 25px; /* Add more space above category titles */
+    margin-bottom: 15px;
+    color: #6a11cb; /* Match heading color used elsewhere */
+    border-bottom: 2px solid #eee; /* Add a subtle separator */
+    padding-bottom: 5px;
+  }
 
 .box-container {
     display: grid;
