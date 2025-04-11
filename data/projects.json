@@ -11,6 +11,12 @@
       "technologies": ["Python", "Pandas", "NumPy", "scikit-learn"],
       "link": "https://github.com/nitinprajapati888/Data_Analyst_Automation.git"
     },
+    {
+      "title": "House Prices",
+      "description": "Advanced Regression Techniques.",
+      "technologies": ["Python", "Pandas", "NumPy", "Matplotlib", "Seaborn"],
+      "link": "https://github.com/nitinprajapati888/Data_Analyst_Automation.git"
+    },
       {
       "title": "Portfolio Website",
       "description": "A personal portfolio website to showcase skills and projects.",
